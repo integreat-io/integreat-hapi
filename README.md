@@ -33,6 +33,10 @@ server.route(routes)
 server.start()
 ```
 
+Note that this package will not alter content-type and will return Boom on
+errors. To be [JSON-API](http://jsonapi.org/) compliant, use the
+[hapi-json-api](https://github.com/kjellmorten/hapi-json-api) package.
+
 ### Running the tests
 
 The tests can be run with `npm test`.
