@@ -22,6 +22,16 @@ test('should return routes', (t) => {
   t.is(routes[0].path, '/entries')
 })
 
+test('should accept multiple methods', (t) => {
+  const greatRoutes = [
+    {method: ['GET', 'POST'], path: `/entries`, handler: () => {}}
+  ]
+
+  const routes = greatHapi(greatRoutes)
+
+  t.deepEqual(routes[0].method, ['GET', 'POST'])
+})
+
 test('should wrap handlers', async (t) => {
   const response = {}
   const handler = sinon.stub().resolves(response)
