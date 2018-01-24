@@ -27,7 +27,7 @@ test('should wrap handlers', async (t) => {
   const handler = sinon.stub().resolves(response)
   const greatRoutes = [{method: 'GET', path: `/entries/{id}/{relationship}`, handler}]
   const request = {method: 'get', params: {id: 'ent1', relationship: 'author'}, path: '/entries/ent1/author'}
-  const expected = {method: 'GET', id: 'ent1', relationship: 'author', path: '/entries/ent1/author'}
+  const expected = {method: 'GET', params: {id: 'ent1', relationship: 'author'}, path: '/entries/ent1/author'}
 
   const hapiRoutes = greatHapi(greatRoutes)
   await hapiRoutes[0].handler(request, reply)
