@@ -4,6 +4,10 @@ Wrappes general route objects from one of the Integreat api packages, and maps
 routes, request objects, and response objects between Hapi and Integreat
 formats.
 
+[![Build Status](https://travis-ci.org/integreat-io/integreat-hapi.svg?branch=master)](https://travis-ci.org/integreat-io/integreat-hapi)
+[![Coverage Status](https://coveralls.io/repos/github/integreat-io/integreat-hapi/badge.svg?branch=master)](https://coveralls.io/github/integreat-io/integreat-hapi?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8f8fd26516a321000e0a/maintainability)](https://codeclimate.com/github/integreat-io/integreat-hapi/maintainability)
+
 ## Getting started
 
 ### Prerequisits
