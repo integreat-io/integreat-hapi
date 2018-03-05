@@ -8,7 +8,7 @@ formats.
 
 ### Prerequisits
 
-Node 8.
+Node v8.6.
 
 ### Installing
 
