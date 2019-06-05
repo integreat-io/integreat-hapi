@@ -5,14 +5,14 @@ import greatHapi from '..'
 
 // Helpers
 
-const reply = () => ({code: () => {}})
+const reply = () => ({ code: () => {} })
 
 // Tests
 
 test('should return routes', (t) => {
   const greatRoutes = [
-    {method: 'GET', path: `/entries`, handler: () => {}},
-    {method: 'GET', path: `/entries/{id}/{relationship}`, handler: () => {}}
+    { method: 'GET', path: `/entries`, handler: () => {} },
+    { method: 'GET', path: `/entries/{id}/{relationship}`, handler: () => {} }
   ]
 
   const routes = greatHapi(greatRoutes)
@@ -24,7 +24,7 @@ test('should return routes', (t) => {
 
 test('should accept multiple methods', (t) => {
   const greatRoutes = [
-    {method: ['GET', 'POST'], path: `/entries`, handler: () => {}}
+    { method: ['GET', 'POST'], path: `/entries`, handler: () => {} }
   ]
 
   const routes = greatHapi(greatRoutes)
@@ -35,19 +35,19 @@ test('should accept multiple methods', (t) => {
 test('should wrap handlers', async (t) => {
   const response = {}
   const handler = sinon.stub().resolves(response)
-  const greatRoutes = [{method: 'GET', path: `/entries/{id}/{relationship}`, handler}]
+  const greatRoutes = [{ method: 'GET', path: `/entries/{id}/{relationship}`, handler }]
   const request = {
     method: 'get',
-    params: {id: 'ent1', relationship: 'author'},
+    params: { id: 'ent1', relationship: 'author' },
     path: '/entries/ent1/author',
-    headers: {Authorization: 'Bearer t0k3n'}
+    headers: { Authorization: 'Bearer t0k3n' }
   }
   const expected = {
     method: 'GET',
-    params: {id: 'ent1', relationship: 'author'},
+    params: { id: 'ent1', relationship: 'author' },
     path: '/entries/ent1/author',
     body: undefined,
-    headers: {authorization: 'Bearer t0k3n'}
+    headers: { authorization: 'Bearer t0k3n' }
   }
 
   const hapiRoutes = greatHapi(greatRoutes)
@@ -58,12 +58,12 @@ test('should wrap handlers', async (t) => {
 })
 
 test('should call reply interface', async (t) => {
-  const response = {statusCode: 200, body: {}}
+  const response = { statusCode: 200, body: {} }
   const handler = async () => response
   const code = sinon.stub()
-  const reply = sinon.stub().returns({code})
-  const greatRoutes = [{method: 'GET', path: `/entries`, handler}]
-  const request = {method: 'get', params: null, path: '/entries'}
+  const reply = sinon.stub().returns({ code })
+  const greatRoutes = [{ method: 'GET', path: `/entries`, handler }]
+  const request = { method: 'get', params: null, path: '/entries' }
 
   const hapiRoutes = greatHapi(greatRoutes)
   await hapiRoutes[0].handler(request, reply)
@@ -75,12 +75,12 @@ test('should call reply interface', async (t) => {
 })
 
 test('should call reply with Boom', async (t) => {
-  const response = {statusCode: 404, statusMessage: 'Not found'}
+  const response = { statusCode: 404, statusMessage: 'Not found' }
   const handler = async () => response
   const code = sinon.stub()
-  const reply = sinon.stub().returns({code})
-  const greatRoutes = [{method: 'GET', path: `/entries`, handler}]
-  const request = {method: 'get', params: null, path: '/entries'}
+  const reply = sinon.stub().returns({ code })
+  const greatRoutes = [{ method: 'GET', path: `/entries`, handler }]
+  const request = { method: 'get', params: null, path: '/entries' }
 
   const hapiRoutes = greatHapi(greatRoutes)
   await hapiRoutes[0].handler(request, reply)
